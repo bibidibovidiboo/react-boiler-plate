@@ -2,9 +2,9 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
-const config = require('./config/key')
+const config = require('./server/config/key')
 const { auth } = require('./middleware/auth')
-const { User } = require('./models/User')
+const { User } = require('./server/models/User')
 
 //application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -88,6 +88,7 @@ app.get('/api/users/auth', auth, (req, res) => {
     isAdmin: req.user.role === 0 ? false : true,
     isAuth: true,
     email: req.user.email,
+
     name: req.user.name,
     lastname: req.user.lastname,
     role: req.user.role,
