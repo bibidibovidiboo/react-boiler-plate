@@ -23,9 +23,10 @@ const userSchema = mongoose.Schema({
   },
   role: {
     type: Number,
-    default: 0
+    default: 0 // 일반 유저는 0 , 관리자는 1
   },
   image: String,
+  // token : 유효성검사
   token: {
     type: String
   },
